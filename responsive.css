@@ -1,0 +1,340 @@
+/*
+ * responsive.css - Responsive Design Styles
+ * Media queries for tablet and mobile breakpoints
+ * Works with Bootstrap grid but adds custom responsive tweaks
+ */
+
+/* ============ LARGE TABLETS & SMALL DESKTOPS (max-width: 1200px) ============ */
+@media (max-width: 1200px) {
+    .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+    }
+
+    .watch-container {
+        grid-template-columns: 1fr 340px;
+    }
+
+    .related-thumb {
+        width: 140px;
+        min-width: 140px;
+    }
+}
+
+/* ============ TABLETS (max-width: 992px) ============ */
+@media (max-width: 992px) {
+    /* Hide sidebar on tablet - show via overlay */
+    .sidebar {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+        z-index: 1100;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .sidebar.collapsed {
+        transform: translateX(-100%);
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    /* Sidebar overlay background */
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1090;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    /* Watch page stacks vertically */
+    .watch-container {
+        grid-template-columns: 1fr;
+    }
+
+    .related-videos {
+        margin-top: 24px;
+    }
+
+    /* Channel header adjustments */
+    .channel-banner {
+        height: 160px;
+    }
+
+    .channel-header {
+        flex-wrap: wrap;
+    }
+
+    .channel-header-buttons {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    /* History items */
+    .history-thumb {
+        width: 200px;
+        min-width: 200px;
+    }
+
+    /* Playlist header */
+    .playlist-header {
+        flex-direction: column;
+    }
+
+    .playlist-cover {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* ============ MOBILE PHONES (max-width: 768px) ============ */
+@media (max-width: 768px) {
+    .navbar-custom {
+        padding: 0 8px;
+    }
+
+    /* Simplified search on mobile */
+    .search-wrapper {
+        margin: 0 8px;
+    }
+
+    .voice-search-btn {
+        display: none;
+    }
+
+    .nav-icons .d-mobile-none {
+        display: none !important;
+    }
+
+    /* Video grid - 2 columns on mobile */
+    .video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 12px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+
+    /* Category bar */
+    .category-bar {
+        padding: 8px 0 12px;
+    }
+
+    .category-chip {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Video card adjustments */
+    .video-info {
+        padding: 10px;
+    }
+
+    .video-title {
+        font-size: 0.88rem;
+    }
+
+    /* Watch page mobile */
+    .video-player {
+        border-radius: 0;
+    }
+
+    .video-actions-bar h1 {
+        font-size: 1.1rem;
+    }
+
+    .action-buttons {
+        gap: 4px;
+    }
+
+    .action-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* Comments */
+    .comment-input-wrapper img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .comment-item img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .comment-replies {
+        margin-left: 36px;
+    }
+
+    /* Related videos - horizontal scroll on mobile */
+    .related-video-card {
+        flex-direction: row;
+    }
+
+    .related-thumb {
+        width: 160px;
+        min-width: 160px;
+    }
+
+    /* History page */
+    .history-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .history-thumb {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    /* Channel page */
+    .channel-banner {
+        height: 120px;
+        border-radius: 8px;
+    }
+
+    .channel-header .channel-pfp {
+        width: 64px;
+        height: 64px;
+    }
+
+    .channel-header-info h1 {
+        font-size: 1.2rem;
+    }
+
+    .channel-tabs {
+        gap: 0;
+    }
+
+    .channel-tab {
+        padding: 10px 16px;
+        font-size: 0.82rem;
+    }
+
+    /* Playlist header */
+    .playlist-cover {
+        max-width: 100%;
+    }
+
+    .playlist-details h1 {
+        font-size: 1.1rem;
+    }
+}
+
+/* ============ SMALL MOBILE (max-width: 480px) ============ */
+@media (max-width: 480px) {
+    /* Single column grid */
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .video-card {
+        border-radius: 0;
+    }
+
+    .main-content {
+        padding: 8px 0;
+    }
+
+    /* Minimal search bar */
+    .search-container input {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .navbar-brand-custom span {
+        display: none; /* Hide text, show only icon */
+    }
+
+    /* Stack action buttons */
+    .action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .action-btn span {
+        display: none; /* Show only icons on very small screens */
+    }
+
+    .like-dislike-pill .action-btn span {
+        display: inline;
+    }
+
+    /* Channel header buttons stack */
+    .channel-header-buttons {
+        flex-direction: column;
+    }
+
+    .channel-header-buttons button {
+        width: 100%;
+    }
+
+    /* Related videos full width */
+    .related-video-card {
+        flex-direction: column;
+    }
+
+    .related-thumb {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/* ============ LANDSCAPE MOBILE ============ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .navbar-custom {
+        height: 48px;
+    }
+
+    .main-content {
+        margin-top: 48px;
+    }
+
+    .sidebar {
+        top: 48px;
+        height: calc(100vh - 48px);
+    }
+}
+
+/* ============ PRINT STYLES ============ */
+@media print {
+    .navbar-custom,
+    .sidebar,
+    .category-bar,
+    .action-buttons,
+    .comment-input-wrapper {
+        display: none !important;
+    }
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch videos on StreamVibe — Your modern video streaming platform.">
+    <title>StreamVibe — Watch</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><polygon points='12,8 26,16 12,24' fill='white'/></svg>" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar-custom d-flex align-items-center" id="navbar">
+        <div class="d-flex align-items-center gap-2">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a href="index.html" class="navbar-brand-custom">
+                <div class="logo-icon">
+                    <i class="bi bi-play-fill"></i>
+                </div>
+                <span>StreamVibe</span>
+            </a>
+        </div>
+
+        <div class="search-wrapper">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search videos..." autocomplete="off" aria-label="Search videos">
+                <button class="search-btn" id="searchBtn" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+
+        <button class="voice-search-btn" aria-label="Voice search">
+            <i class="bi bi-mic-fill"></i>
+        </button>
+
+        <div class="nav-icons">
+            <button class="nav-icon-btn d-mobile-none" aria-label="Create" title="Create">
+                <i class="bi bi-camera-video"></i>
+            </button>
+            <button class="nav-icon-btn" aria-label="Notifications" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="badge-dot"></span>
+            </button>
+            <button class="nav-icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+                <i class="bi bi-sun-fill" id="themeIcon"></i>
+            </button>
+            <img class="profile-img" src="https://picsum.photos/seed/myavatar/100/100" alt="Profile" title="Your profile">
+        </div>
+    </nav>
+
+    <!-- ============ SIDEBAR OVERLAY (mobile) ============ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar collapsed" id="sidebar">
+        <div class="sidebar-section">
+            <a href="index.html" class="sidebar-item">
+                <i class="bi bi-house-door-fill"></i>
+                <span>Home</span>
+            </a>
+            <a href="explore.html" class="sidebar-item">
+                <i class="bi bi-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="shorts.html" class="sidebar-item">
+                <i class="bi bi-collection-play"></i>
+                <span>Shorts</span>
+            </a>
+            <a href="subscriptions.html" class="sidebar-item">
+                <i class="bi bi-broadcast"></i>
+                <span>Subscriptions</span>
+            </a>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">You</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-person-circle"></i>
+                <span>Your Channel</span>
+            </a>
+            <a href="history.html" class="sidebar-item">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-music-note-list"></i>
+                <span>Playlists</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-clock"></i>
+                <span>Watch Later</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-hand-thumbs-up"></i>
+                <span>Liked Videos</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main-content expanded" id="mainContent">
+        <div class="watch-container">
+            <div class="row g-4 align-items-start">
+                <!-- LEFT: Video Player + Info -->
+                <div class="video-primary col-12 col-lg-8">
+                    <!-- Video Player -->
+                    <div class="video-player-wrapper">
+                        <div class="video-player ratio ratio-16x9" id="videoPlayer">
+                            <iframe
+                                id="youtubePlayer"
+                                src=""
+                                title="StreamVibe video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Video Actions Bar (Title, Stats, Buttons) -->
+                    <div class="video-actions-bar" id="videoActionsBar">
+                        <!-- Rendered by watch.js -->
+                    </div>
+
+                    <!-- Channel Info -->
+                    <div class="channel-info-watch" id="channelInfoWatch">
+                        <!-- Rendered by watch.js -->
+                    </div>
+
+                    <!-- Description Box -->
+                    <div class="description-box" id="descriptionBox">
+                        <!-- Rendered by watch.js -->
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <div class="comments-header">
+                            <h3><span id="commentCount">0</span> Comments</h3>
+                        </div>
+
+                        <!-- Comment Input -->
+                        <div class="comment-input-wrapper">
+                            <img src="https://picsum.photos/seed/myavatar/100/100" alt="You">
+                            <div class="comment-input-box">
+                                <input type="text" id="commentInput" placeholder="Add a comment...">
+                                <div class="comment-actions" id="commentActions">
+                                    <button class="comment-cancel-btn" id="cancelComment">Cancel</button>
+                                    <button class="comment-submit-btn" id="submitComment">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comments List -->
+                        <div id="commentsList">
+                            <!-- Rendered by watch.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Related Videos -->
+                <div class="related-videos col-12 col-lg-4">
+                    <h3>Up next</h3>
+                    <div id="related-videos" class="related-videos-list">
+                        <!-- Rendered by watch.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/videos.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/watch.js"></script>
+
+    <!-- Watch-page search redirects to index -->
+    <script>
+        // Search from watch page redirects to homepage
+        function performSearch(query) {
+            if (query && query.trim()) {
+                window.location.href = `index.html?q=${encodeURIComponent(query.trim())}`;
+            }
+        }
+
+        // Init search bar listeners
+        initSearch();
+
+        // Setup sidebar + theme
+        function setupSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            $('#sidebarToggle').on('click', function () {
+                if (window.innerWidth <= 992) {
+                    $(sidebar).toggleClass('mobile-open');
+                    $(overlay).toggleClass('show');
+                } else {
+                    $(sidebar).toggleClass('collapsed');
+                    $(mainContent).toggleClass('expanded');
+                }
+            });
+
+            $(overlay).on('click', function () {
+                $(sidebar).removeClass('mobile-open');
+                $(overlay).removeClass('show');
+            });
+
+            $(window).on('resize', function () {
+                if (window.innerWidth > 992) {
+                    $(sidebar).removeClass('mobile-open');
+                    $(overlay).removeClass('show');
+                }
+            });
+        }
+
+        function setupThemeToggle() {
+            $('#themeToggle').on('click', function () {
+                const newTheme = toggleTheme();
+                showToast(newTheme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+            });
+        }
+    </script>
+
+</body>
+</html>

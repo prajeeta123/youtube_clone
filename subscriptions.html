@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subscriptions on StreamVibe.">
+    <title>Subscriptions — StreamVibe</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><polygon points='12,8 26,16 12,24' fill='white'/></svg>" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar-custom d-flex align-items-center" id="navbar">
+        <div class="d-flex align-items-center gap-2">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a href="index.html" class="navbar-brand-custom">
+                <div class="logo-icon">
+                    <i class="bi bi-play-fill"></i>
+                </div>
+                <span>StreamVibe</span>
+            </a>
+        </div>
+
+        <div class="search-wrapper">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search videos..." autocomplete="off" aria-label="Search videos">
+                <button class="search-btn" id="searchBtn" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+
+        <button class="voice-search-btn" aria-label="Voice search">
+            <i class="bi bi-mic-fill"></i>
+        </button>
+
+        <div class="nav-icons">
+            <button class="nav-icon-btn d-mobile-none" aria-label="Create" title="Create">
+                <i class="bi bi-camera-video"></i>
+            </button>
+            <button class="nav-icon-btn" aria-label="Notifications" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="badge-dot"></span>
+            </button>
+            <button class="nav-icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+                <i class="bi bi-sun-fill" id="themeIcon"></i>
+            </button>
+            <img class="profile-img" src="https://picsum.photos/seed/myavatar/100/100" alt="Profile" title="Your profile">
+        </div>
+    </nav>
+
+    <!-- ============ SIDEBAR OVERLAY ============ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-section">
+            <a href="index.html" class="sidebar-item">
+                <i class="bi bi-house-door-fill"></i>
+                <span>Home</span>
+            </a>
+            <a href="explore.html" class="sidebar-item">
+                <i class="bi bi-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="shorts.html" class="sidebar-item">
+                <i class="bi bi-collection-play"></i>
+                <span>Shorts</span>
+            </a>
+            <a href="subscriptions.html" class="sidebar-item active">
+                <i class="bi bi-broadcast"></i>
+                <span>Subscriptions</span>
+            </a>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">You</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-person-circle"></i>
+                <span>Your Channel</span>
+            </a>
+            <a href="history.html" class="sidebar-item">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-music-note-list"></i>
+                <span>Playlists</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-clock"></i>
+                <span>Watch Later</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-hand-thumbs-up"></i>
+                <span>Liked Videos</span>
+            </a>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Explore</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-fire"></i>
+                <span>Trending</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-controller"></i>
+                <span>Gaming</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-music-note-beamed"></i>
+                <span>Music</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-film"></i>
+                <span>Movies</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main-content" id="mainContent">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1><i class="bi bi-broadcast"></i> Subscriptions</h1>
+        </div>
+
+        <div class="channel-subscriptions" id="subscribedChannels" style="display:flex; gap:16px; margin-bottom:32px; overflow-x:auto; padding-bottom:8px; scrollbar-width:none;">
+            <!-- Channels Rendered Here -->
+        </div>
+
+        <h3 style="font-size: 1.1rem; margin-bottom: 16px; font-weight: 600;">Latest</h3>
+        <!-- Video Grid -->
+        <div class="video-grid" id="subscriptionsGrid">
+            <!-- Rendered by JS -->
+        </div>
+    </main>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/videos.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/search.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            setupSidebar();
+            setupThemeToggle();
+            initSearch();
+            renderSubscriptions();
+            
+            // Click on video card navigates to watch page
+            $(document).on('click', '.video-card', function (e) {
+                if ($(e.target).closest('a').length > 0) return;
+                const videoId = $(this).data('video-id');
+                if (videoId) {
+                    window.location.href = `watch.html?v=${videoId}`;
+                }
+            });
+        });
+
+        function renderSubscriptions() {
+            const grid = document.getElementById('subscriptionsGrid');
+            const channelsContainer = document.getElementById('subscribedChannels');
+            
+            // Mock subscribed channels based on our video data
+            const subscribedChannels = [
+                { name: "CodeMaster Pro", img: "https://picsum.photos/seed/ch1/100/100" },
+                { name: "Tech Insider", img: "https://picsum.photos/seed/ch2/100/100" },
+                { name: "GameZone", img: "https://picsum.photos/seed/ch4/100/100" },
+                { name: "News Daily", img: "https://picsum.photos/seed/ch8/100/100" },
+                { name: "AI Academy", img: "https://picsum.photos/seed/ch11/100/100" },
+                { name: "CinemaScope", img: "https://picsum.photos/seed/ch18/100/100" }
+            ];
+
+            let channelsHtml = '';
+            subscribedChannels.forEach(ch => {
+                channelsHtml += `
+                    <a href="channel.html?channel=${encodeURIComponent(ch.name)}" style="display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--text-primary); min-width:80px;">
+                        <img src="${ch.img}" alt="${ch.name}" style="width:56px; height:56px; border-radius:50%; object-fit:cover; margin-bottom:8px;">
+                        <span style="font-size:0.8rem; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:80px;">${ch.name}</span>
+                    </a>
+                `;
+            });
+            channelsContainer.innerHTML = channelsHtml;
+
+            const subChannelNames = subscribedChannels.map(ch => ch.name);
+            const subVideos = VIDEOS.filter(v => subChannelNames.includes(v.channel)).sort(() => 0.5 - Math.random()).slice(0, 16);
+            
+            let html = '';
+            subVideos.forEach(video => {
+                const isLive = video.duration === 'LIVE';
+                html += `
+                    <div class="video-card" data-video-id="${video.id}">
+                        <div class="thumbnail-wrapper">
+                            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                            <video class="video-preview" src="${video.videoUrl || 'https://www.w3schools.com/html/mov_bbb.mp4'}" muted loop playsinline></video>
+                            <span class="duration-badge ${isLive ? 'live' : ''}">${video.duration}</span>
+                        </div>
+                        <div class="video-info">
+                            <a href="channel.html?channel=${encodeURIComponent(video.channel)}">
+                                <img class="channel-avatar" src="${video.channelImg}" alt="${video.channel}">
+                            </a>
+                            <div class="video-details">
+                                <div class="video-title">${video.title}</div>
+                                <a href="channel.html?channel=${encodeURIComponent(video.channel)}" class="video-channel">${video.channel}</a>
+                                <div class="video-meta">
+                                    <span>${formatViews(getViewCount(video.id))}</span>
+                                    <span>${video.uploadTime}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        function performSearch(query) {
+            if (query && query.trim()) {
+                window.location.href = `index.html?q=${encodeURIComponent(query.trim())}`;
+            }
+        }
+
+        function setupSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            $('#sidebarToggle').on('click', function () {
+                if (window.innerWidth <= 992) {
+                    $(sidebar).toggleClass('mobile-open');
+                    $(overlay).toggleClass('show');
+                } else {
+                    $(sidebar).toggleClass('collapsed');
+                    $(mainContent).toggleClass('expanded');
+                }
+            });
+
+            $(overlay).on('click', function () {
+                $(sidebar).removeClass('mobile-open');
+                $(overlay).removeClass('show');
+            });
+
+            $(window).on('resize', function () {
+                if (window.innerWidth > 992) {
+                    $(sidebar).removeClass('mobile-open');
+                    $(overlay).removeClass('show');
+                }
+            });
+        }
+
+        function setupThemeToggle() {
+            $('#themeToggle').on('click', function () {
+                const newTheme = toggleTheme();
+                showToast(newTheme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+            });
+        }
+    </script>
+</body>
+</html>
+

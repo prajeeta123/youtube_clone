@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StreamVibe — Discover, watch, and share your favorite videos. A modern video streaming platform with curated content across Music, Gaming, Coding, AI, Movies, Sports, News, and more.">
+    <meta name="keywords" content="StreamVibe, video streaming, watch videos, music, gaming, coding tutorials, AI, movies, sports highlights">
+    <meta name="author" content="StreamVibe">
+    <title>StreamVibe — Discover & Watch Videos</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon (inline SVG as data URI) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><polygon points='12,8 26,16 12,24' fill='white'/></svg>" type="image/svg+xml">
+</head>
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar-custom d-flex align-items-center" id="navbar">
+        <!-- Left: Hamburger + Logo -->
+        <div class="d-flex align-items-center gap-2">
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <a href="index.html" class="navbar-brand-custom">
+                <div class="logo-icon">
+                    <i class="bi bi-play-fill"></i>
+                </div>
+                <span>StreamVibe</span>
+            </a>
+        </div>
+
+        <!-- Center: Search Bar -->
+        <div class="search-wrapper">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search videos..." autocomplete="off" aria-label="Search videos">
+                <button class="search-btn" id="searchBtn" aria-label="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+            <!-- Search Suggestions Dropdown -->
+            <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+
+        <!-- Voice Search -->
+        <button class="voice-search-btn" aria-label="Voice search">
+            <i class="bi bi-mic-fill"></i>
+        </button>
+
+        <!-- Right: Icons -->
+        <div class="nav-icons">
+            <button class="nav-icon-btn d-mobile-none" aria-label="Create" title="Create">
+                <i class="bi bi-camera-video"></i>
+            </button>
+            <button class="nav-icon-btn" aria-label="Notifications" title="Notifications">
+                <i class="bi bi-bell"></i>
+                <span class="badge-dot"></span>
+            </button>
+            <button class="nav-icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">
+                <i class="bi bi-sun-fill" id="themeIcon"></i>
+            </button>
+            <img class="profile-img" src="https://picsum.photos/seed/myavatar/100/100" alt="Profile" title="Your profile">
+        </div>
+    </nav>
+
+    <!-- ============ SIDEBAR OVERLAY (mobile) ============ -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Main Navigation -->
+        <div class="sidebar-section">
+            <a href="index.html" class="sidebar-item active">
+                <i class="bi bi-house-door-fill"></i>
+                <span>Home</span>
+            </a>
+            <a href="explore.html" class="sidebar-item">
+                <i class="bi bi-compass"></i>
+                <span>Explore</span>
+            </a>
+            <a href="shorts.html" class="sidebar-item">
+                <i class="bi bi-collection-play"></i>
+                <span>Shorts</span>
+            </a>
+            <a href="subscriptions.html" class="sidebar-item">
+                <i class="bi bi-broadcast"></i>
+                <span>Subscriptions</span>
+            </a>
+        </div>
+
+        <!-- You Section -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">You</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-person-circle"></i>
+                <span>Your Channel</span>
+            </a>
+            <a href="history.html" class="sidebar-item">
+                <i class="bi bi-clock-history"></i>
+                <span>History</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-music-note-list"></i>
+                <span>Playlists</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-clock"></i>
+                <span>Watch Later</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-hand-thumbs-up"></i>
+                <span>Liked Videos</span>
+            </a>
+        </div>
+
+        <!-- Explore Section -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Explore</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-fire"></i>
+                <span>Trending</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-controller"></i>
+                <span>Gaming</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-music-note-beamed"></i>
+                <span>Music</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-film"></i>
+                <span>Movies</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-broadcast-pin"></i>
+                <span>Live</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-trophy"></i>
+                <span>Sports</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-newspaper"></i>
+                <span>News</span>
+            </a>
+        </div>
+
+        <!-- Settings -->
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">More</div>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-gear"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-flag"></i>
+                <span>Report</span>
+            </a>
+            <a href="#" class="sidebar-item">
+                <i class="bi bi-question-circle"></i>
+                <span>Help</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <main class="main-content" id="mainContent">
+        <!-- Category Filter Chips -->
+        <div class="category-bar" id="categoryBar">
+            <!-- Rendered by app.js -->
+        </div>
+
+        <!-- Search Results Info -->
+        <div id="gridTitle"></div>
+
+        <!-- Video Grid -->
+        <div class="video-grid" id="videoGrid">
+            <!-- Rendered by app.js -->
+        </div>
+
+        <!-- Infinite Scroll Loading Spinner -->
+        <div class="loading-container" id="loadingSpinner" style="display: none;">
+            <div class="loading-spinner"></div>
+        </div>
+    </main>
+
+    <!-- ============ SAVE TO PLAYLIST MODAL ============ -->
+    <div class="modal fade" id="saveModal" tabindex="-1" aria-labelledby="saveModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="saveModalLabel">Save to...</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="save-modal-list" id="saveModalList">
+                        <!-- Rendered dynamically -->
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#createPlaylistModal">
+                        <i class="bi bi-plus-lg"></i> New Playlist
+                    </button>
+                    <button class="btn btn-sm btn-primary" data-bs-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ CREATE PLAYLIST MODAL ============ -->
+    <div class="modal fade" id="createPlaylistModal" tabindex="-1" aria-labelledby="createPlaylistLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPlaylistLabel">Create Playlist</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="newPlaylistName" class="form-control" placeholder="Enter playlist name..." maxlength="50">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-outline-light" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-sm btn-primary" onclick="handleCreatePlaylist()">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TOAST CONTAINER ============ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============ SCRIPTS ============ -->
+    <!-- jQuery (for DOM manipulation & animation) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App Scripts (order matters: data → storage → search → app) -->
+    <script src="data/videos.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Handle search redirects from other pages -->
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                const searchInput = document.getElementById('searchInput');
+                if (searchInput) searchInput.value = query;
+                // Wait for app.js to initialize, then perform search
+                $(document).ready(function() {
+                    setTimeout(function() {
+                        performSearch(query);
+                    }, 100);
+                });
+            }
+        })();
+    </script>
+
+</body>
+</html>
